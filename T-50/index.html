@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-50 | Elite Athlete Brand Management (2025)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="animation.json" as="fetch" crossorigin>
+    <!-- Main font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Artistic headline font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <style>
+        :root {
+            --primary: #0A1F3D; /* Dark blue */
+            --primary-light: #1A4B8C; /* Medium blue */
+            --secondary: #8D9AAF; /* Grey */
+            --accent: #FFFFFF; /* White */
+            --text: #1A1A1A; /* Dark text */
+            --text-light: #6C757D; /* Light grey text */
+            --bg-light: #F8F9FA; /* Light grey background */
+            --transition: cubic-bezier(0.25, 0.1, 0.25, 1);
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--accent);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation - Enhanced with Glassmorphism */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 31, 61, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--accent);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+            nav.scrolled {
+                padding: 1rem 5%;
+                box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+                background: rgba(10, 31, 61, 0.95);
+            }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+            .logo:hover {
+                transform: translateY(-2px);
+            }
+
+            .logo img {
+                height: 40px;
+                width: auto;
+                transition: transform 0.3s ease;
+            }
+
+            .logo:hover img {
+                transform: rotate(-5deg);
+            }
+
+            .logo span {
+                color: var(--secondary);
+                transition: color 0.3s ease;
+            }
+
+            .logo:hover span {
+                color: var(--accent);
+            }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+            .nav-links a {
+                color: var(--accent);
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                position: relative;
+                padding: 10px 0;
+            }
+
+                .nav-links a:after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 2px;
+                    bottom: 0;
+                    left: 0;
+                    background-color: var(--secondary);
+                    transition: var(--transition);
+                }
+
+                .nav-links a:hover:after,
+                .nav-links a.active:after {
+                    width: 100%;
+                }
+
+                .nav-links a:hover {
+                    opacity: 0.8;
+                    transform: translateY(-2px);
+                }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+            .menu-toggle:hover {
+                transform: scale(1.1);
+            }
+
+        /* Hero Section - Clean video background */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10%;
+            background-color: var(--primary);
+            color: var(--accent);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Parallax Elements */
+        .parallax-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .parallax-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            will-change: transform;
+        }
+
+        [data-depth="0.1"] {
+            background-image: url('assets/particles-light.png');
+            opacity: 0.3;
+        }
+
+        [data-depth="0.3"] {
+            background-image: url('assets/particles-dark.png');
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-pre-title {
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            opacity: 0;
+            animation: fadeIn 0.5s ease 0.3s forwards;
+            font-weight: 300;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0 auto 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+            font-style: italic;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .typewriter-line {
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+        }
+
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid var(--secondary);
+            animation: typing 1.5s steps(20, end) 0.5s forwards, blink-caret 0.75s step-end 3;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 2rem auto 3rem;
+            color: rgba(255,255,255,0.9);
+            opacity: 0;
+            animation: fadeIn 0.8s ease 1.2s forwards;
+            font-weight: 300;
+        }
+
+        .cta-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 1.1rem 2.5rem;
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 1.5s forwards;
+            position: center;
+            overflow: visible;
+            font-size: 1.1rem;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-5px) scale(1.02);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+                background: var(--accent);
+            }
+
+                .cta-button:hover ~ .scroll-prompt {
+                    opacity: 0.3;
+                    transform: translateY(10px);
+                }
+
+            .cta-button:active {
+                transform: translateY(-2px);
+            }
+
+        .cta-hover-text {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.9rem;
+            color: var(--accent);
+            opacity: 0;
+            transition: all 0.3s ease;
+            background: rgba(10,31,61,0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .cta-container:hover .scroll-prompt {
+            opacity: 0.3;
+            transform: translateY(10px);
+        }
+
+        /* Centered Scroll Prompt */
+        .scroll-prompt {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            opacity: 0;
+            animation: fadeIn 1s ease 2s forwards;
+            cursor: pointer;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .scroll-text {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .scroll-icon {
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            color: var(--accent);
+            background: rgba(141, 154, 175, 0.5);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+            .scroll-icon:hover {
+                background: rgba(141, 154, 175, 0.8);
+                transform: scale(1.1);
+            }
+
+        /* Scroll-triggered animations */
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .is-visible {
+            opacity: 1;
+            transform: translate(0);
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink-caret {
+            from, to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--secondary)
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-15px);
+            }
+
+            60% {
+                transform: translateY(-7px);
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+            .section.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            font-style: italic;
+        }
+
+            .section-title:after {
+                content: '';
+                position: absolute;
+                width: 80px;
+                height: 3px;
+                background: var(--secondary);
+                bottom: -12px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 4rem;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* About Section - Lottie Animation Container */
+        #about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.8rem;
+            color: var(--text-light);
+        }
+
+        .about-image {
+            height: 400px;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+            border: 1px solid rgba(0,0,0,0.05);
+            aspect-ratio: 16/9;
+        }
+
+        @media (max-width: 768px) {
+            .about-image {
+                aspect-ratio: 1/1;
+            }
+        }
+
+        .lottie-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        dotlottie-player {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 400ms ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            filter: hue-rotate(5deg) saturate(1.1);
+        }
+
+            dotlottie-player.active {
+                opacity: 1;
+            }
+
+        .sport-label {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 31, 61, 0.8);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+            opacity: 0;
+            transition: opacity 400ms ease;
+            z-index: 10;
+        }
+
+            .sport-label.active {
+                opacity: 1;
+            }
+
+
+        /* Athletes Section - Enhanced Cards */
+        .athletes {
+            background-color: var(--bg-light);
+        }
+
+        .athletes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .athlete-card {
+            height: 500px;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.5s var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+            .athlete-card:hover {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+                border-color: rgba(10,31,61,0.1);
+            }
+
+        .athlete-image {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+            .athlete-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.8s ease;
+            }
+
+        .athlete-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2.5rem;
+            background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+            color: var(--accent);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.6s ease;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
+
+        .athlete-card:hover .athlete-image img {
+            transform: scale(1.1);
+        }
+
+        .athlete-card:hover .athlete-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .athlete-name {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .athlete-sport {
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .athlete-bio {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.8rem;
+            opacity: 0.9;
+        }
+
+        .athlete-social {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+            .athlete-social a {
+                color: var(--accent);
+                font-size: 1.2rem;
+                transition: all 0.3s ease;
+                background: rgba(255,255,255,0.1);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+                border: 1px solid var(--glass-border);
+            }
+
+                .athlete-social a:hover {
+                    color: var(--secondary);
+                    transform: translateY(-3px);
+                    background: rgba(255,255,255,0.2);
+                }
+
+        /* Services Section - Glassmorphism Cards */
+        #services {
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            padding: 3rem 2.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.5s var(--transition);
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+            .service-card.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .service-card:hover {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+                border-color: rgba(10,31,61,0.1);
+                background: rgba(255, 255, 255, 0.95);
+            }
+
+        .service-icon {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) translateY(-5px);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-family: 'Space Grotesk', sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        .service-card:hover .service-title {
+            color: var(--primary-light);
+        }
+
+        .service-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        /* Service Pathway */
+        .service-pathway {
+            position: relative;
+            margin: 4rem auto;
+            max-width: 900px;
+        }
+
+        .pathway-line {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 0;
+        }
+
+        .pathway-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step {
+            text-align: center;
+            width: 150px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+            border: 3px solid white;
+            box-shadow: 0 0 0 4px var(--secondary);
+        }
+
+        .step h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .step.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+            .step.active .step-icon {
+                background: var(--accent);
+                color: var(--primary);
+            }
+
+        /* Contact Section - Enhanced Form */
+        #contact {
+            background: var(--primary);
+            color: white;
+        }
+
+            #contact .section-title {
+                color: white;
+            }
+
+            #contact .section-subtitle {
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: scale(0.95);
+            transition: all 0.6s ease;
+            opacity: 0;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+        }
+
+            .contact-form.visible {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1.1rem 1.3rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+            font-size: 1rem;
+            background: rgba(255,255,255,0.8);
+        }
+
+            .form-control:focus {
+                outline: none;
+                border-color: var(--primary);
+                box-shadow: 0 0 0 3px rgba(10,31,61,0.1);
+                background: white;
+            }
+
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary);
+            color: var(--accent);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .submit-btn::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                transition: 0.5s;
+            }
+
+            .submit-btn:hover {
+                background: var(--primary-light);
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+
+                .submit-btn:hover::before {
+                    left: 100%;
+                }
+
+        /* Footer - Enhanced with Glassmorphism */
+        footer {
+            background-color: var(--primary);
+            color: var(--accent);
+            padding: 5rem 5% 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            footer::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('assets/footer-pattern.png') center/cover;
+                opacity: 0.05;
+                z-index: 0;
+            }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            display: block;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+            .footer-logo:hover {
+                transform: translateY(-3px);
+            }
+
+            .footer-logo img {
+                height: 50px;
+                width: auto;
+                transition: transform 0.3s ease;
+            }
+
+            .footer-logo:hover img {
+                transform: rotate(-5deg);
+            }
+
+            .footer-logo span {
+                color: var(--secondary);
+                transition: color 0.3s ease;
+            }
+
+            .footer-logo:hover span {
+                color: var(--accent);
+            }
+
+        .footer-about p {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+            .footer-social a {
+                color: var(--accent);
+                font-size: 1.2rem;
+                transition: all 0.3s ease;
+                background: rgba(255,255,255,0.1);
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+                border: 1px solid var(--glass-border);
+            }
+
+                .footer-social a:hover {
+                    background: rgba(255,255,255,0.2);
+                    transform: translateY(-3px);
+                }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.8rem;
+            font-family: 'Space Grotesk', sans-serif;
+            position: relative;
+        }
+
+            .footer-links h3:after {
+                content: '';
+                position: absolute;
+                width: 50px;
+                height: 2px;
+                background: var(--secondary);
+                bottom: -8px;
+                left: 0;
+            }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 1rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+            .footer-links a:hover {
+                opacity: 1;
+                transform: translateX(5px);
+            }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* New Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .section {
+                padding: 6rem 5%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: fit-content;
+                grid-row: 1;
+            }
+
+            .hero-title {
+                font-size: clamp(2.5rem, 6vw, 3.5rem);
+            }
+
+            .pathway-steps {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .pathway-line {
+                display: none;
+            }
+
+            .step {
+                width: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(10, 31, 61, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: transform 0.3s ease;
+                border-left: 1px solid var(--glass-border);
+            }
+
+                .nav-links.active {
+                    transform: translateX(-100%);
+                }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 5rem 5%;
+            }
+
+            .athlete-card, .service-card {
+                height: auto;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 0 5%;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                margin: 1.5rem auto 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid, .athletes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .scroll-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .step {
+                width: 100px;
+            }
+
+                .step h4 {
+                    font-size: 1rem;
+                }
+
+                .step p {
+                    font-size: 0.8rem;
+                }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <img src="assets/logo.png" alt="T-50 Logo">
+            <span>T<span>50</span></span>
+        </a>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#athletes">Athletes</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="assets/athlete-highlights.mp4" type="video/mp4">
+            <!-- Fallback for browsers that don't support MP4 -->
+            <source src="assets/athlete-highlights.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Parallax Elements -->
+        <div class="parallax-elements">
+            <div class="parallax-layer" data-depth="0.1"></div>
+            <div class="parallax-layer" data-depth="0.3"></div>
+        </div>
+
+        <div class="hero-content">
+            <p class="hero-pre-title">FOR EMERGING ELITE TALENT</p>
+            <h1 class="hero-title">
+                <span class="typewriter-line">
+                    <span class="typewriter">Create.</span>
+                </span>
+                <span>Your Cultural Legacy</span>
+            </h1>
+            <p class="hero-description">We craft iconic personal brands and strategic media representation for tomorrow's sports legends.</p>
+            <div class="cta-container">
+                <a href="#contact" class="cta-button">
+                    <span>Apply for Representation</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-prompt">
+            <span class="scroll-text">Explore More</span>
+            <i class="fas fa-chevron-down scroll-icon"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <h2 class="section-title">The T-50 Difference</h2>
+        <p class="section-subtitle">Where athletic excellence meets brand strategy</p>
+
+        <div class="about-content">
+            <div class="about-text fade-in-left">
+                <p>T-50 is a next-generation agency specializing in athlete brand development and media representation. We help young talents build sustainable careers beyond their sport.</p>
+                <p>Our 2025 approach combines traditional brand building with cutting-edge digital strategies tailored for today's media landscape.</p>
+                <p>We work with a select group of athletes to create authentic, culturally relevant personal brands that resonate with fans and sponsors alike.</p>
+            </div>
+            <div class="about-image fade-in-right">
+                <div class="lottie-container">
+                    <!-- Basketball -->
+                    <dotlottie-player class="active"
+                                      src="https://lottie.host/073a99f6-7264-4878-b0eb-36a109155bdc/J5EYhgqqsS.json"
+                                      background="transparent"
+                                      speed="1"
+                                      loop
+                                      autoplay>
+                    </dotlottie-player>
+
+                    <!-- Boxing -->
+                    <dotlottie-player src="https://lottie.host/bb5c8c8b-8b9e-4e4e-8c5e-5e5e5e5e5e5e/9639152.json"
+                                      background="transparent"
+                                      speed="1"
+                                      loop
+                                      autoplay>
+                    </dotlottie-player>
+
+                    <!-- Football -->
+                    <dotlottie-player src="https://lottie.host/c2b14b93-8941-4a57-85ee-86f681fe1b00/WKxa3r4UFX.json"
+                                      background="transparent"
+                                      speed="1"
+                                      loop
+                                      autoplay>
+                    </dotlottie-player>
+
+                    <!-- Tennis -->
+                    <dotlottie-player src="https://lottie.host/038a900c-6139-431d-ae6e-9e1d1fc48d6c/jad5TFsoFk.json"
+                                      background="transparent"
+                                      speed="1"
+                                      loop
+                                      autoplay>
+                    </dotlottie-player>
+
+                    <!-- Running -->
+                    <dotlottie-player src="https://lottie.host/e7659715-c897-4896-b2a8-c975f17b1412/iffVPqkNKf.json"
+                                      background="transparent"
+                                      speed="1"
+                                      loop
+                                      autoplay>
+                    </dotlottie-player>
+                </div>
+                <div class="sport-label active">Basketball</div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Athletes Section -->
+    <section class="section athletes" id="athletes">
+        <h2 class="section-title">Featured Athletes</h2>
+        <p class="section-subtitle">Developing the next generation of sports icons</p>
+
+        <div class="athletes-grid">
+            <div class="athlete-card fade-in-up">
+                <div class="athlete-image">
+                    <img src="assets/athlete1.png" alt="Alex Morgan - Soccer Player">
+                </div>
+                <div class="athlete-info">
+                    <h3 class="athlete-name">Alex Morgan</h3>
+                    <p class="athlete-sport">Football | Brand Ambassador</p>
+                    <p class="athlete-bio">At 22, already working with global sportswear brands through our strategic partnership program.</p>
+                    <div class="athlete-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="athlete-card fade-in-up" style="transition-delay: 0.2s;">
+                <div class="athlete-image">
+                    <img src="assets/athlete2.png" alt="Jordan Lee - Track Athlete">
+                </div>
+                <div class="athlete-info">
+                    <h3 class="athlete-name">Jordan Lee</h3>
+                    <p class="athlete-sport">Track & Field | Media Personality</p>
+                    <p class="athlete-bio">Olympic hopeful whose media presence has attracted major lifestyle brand collaborations.</p>
+                    <div class="athlete-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Comprehensive solutions for elite athlete branding</p>
+
+        <!-- Service Pathway Visualization -->
+        <div class="service-pathway">
+            <div class="pathway-line"></div>
+            <div class="pathway-steps">
+                <div class="step" data-step="1">
+                    <div class="step-icon">1</div>
+                    <h4>Discovery</h4>
+                    <p>Brand audit & goal alignment</p>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-icon">2</div>
+                    <h4>Strategy</h4>
+                    <p>Custom brand roadmap</p>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-icon">3</div>
+                    <h4>Execution</h4>
+                    <p>Content & media rollout</p>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-icon">4</div>
+                    <h4>Growth</h4>
+                    <p>Sponsorships & scaling</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card" style="transition-delay: 0.1s;">
+                <div class="service-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3 class="service-title">Brand Strategy</h3>
+                <p class="service-description">Develop a distinctive personal brand identity that stands out in your sport and beyond.</p>
+            </div>
+
+            <div class="service-card" style="transition-delay: 0.2s;">
+                <div class="service-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3 class="service-title">Media Representation</h3>
+                <p class="service-description">Strategic press placement and interview coaching to amplify your public profile.</p>
+            </div>
+
+            <div class="service-card" style="transition-delay: 0.3s;">
+                <div class="service-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3 class="service-title">Event Management</h3>
+                <p class="service-description">End-to-end coordination of appearances, meets, and brand activations.</p>
+            </div>
+
+            <div class="service-card" style="transition-delay: 0.4s;">
+                <div class="service-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3 class="service-title">Sponsorships</h3>
+                <p class="service-description">Secure and manage partnerships with brands that align with your values.</p>
+            </div>
+
+            <div class="service-card" style="transition-delay: 0.5s;">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="service-title">Digital Growth</h3>
+                <p class="service-description">Platform-specific strategies to expand your social media influence.</p>
+            </div>
+
+            <div class="service-card" style="transition-delay: 0.6s;">
+                <div class="service-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3 class="service-title">Content Production</h3>
+                <p class="service-description">Professional photo and video content showcasing your journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <h2 class="section-title">Start Your Journey</h2>
+        <p class="section-subtitle">2025 applications open for select emerging talents</p>
+
+        <form class="contact-form" action="https://formspree.io/f/mnqeznvy" method="POST">
+            <div class="form-group">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sport" class="form-label">Sport/Discipline</label>
+                <input type="text" id="sport" name="sport" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message" class="form-label">Your Brand Aspirations</label>
+                <textarea id="message" name="message" class="form-control" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Request Consultation</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <a href="#" class="footer-logo">
+                    <img src="assets/logo.png" alt="T-50 Logo">
+                    <span>T<span>50</span></span>
+                </a>
+                <p>Building the next generation of athlete brands.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="#about">Our Approach</a></li>
+                    <li><a href="#athletes">Athletes</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Apply</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#services">Branding</a></li>
+                    <li><a href="#services">Media Representation</a></li>
+                    <li><a href="#services">Event Management</a></li>
+                    <li><a href="#services">Sponsorships</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 T-50 Brand Management. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') ?
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Navbar scroll effect with enhanced performance
+        const navbar = document.getElementById('navbar');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (Math.abs(lastScrollY - window.scrollY) > 5) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                lastScrollY = window.scrollY;
+            }
+        });
+
+        // Enhanced section reveal animation
+        const sections = document.querySelectorAll('.section');
+        const serviceCards = document.querySelectorAll('.service-card');
+        const contactForm = document.querySelector('.contact-form');
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    // Special animations for services section
+                    if (entry.target.id === 'services') {
+                        const cards = entry.target.querySelectorAll('.service-card');
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 100);
+                        });
+                    }
+
+                    // Special animation for contact form
+                    if (entry.target.id === 'contact') {
+                        setTimeout(() => {
+                            contactForm.classList.add('visible');
+                        }, 300);
+                    }
+                } else {
+                    entry.target.classList.remove('visible');
+
+                    // Reset service cards when scrolled away
+                    if (entry.target.id === 'services') {
+                        const cards = entry.target.querySelectorAll('.service-card');
+                        cards.forEach(card => {
+                            card.classList.remove('visible');
+                        });
+                    }
+
+                    // Reset contact form when scrolled away
+                    if (entry.target.id === 'contact') {
+                        contactForm.classList.remove('visible');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Set active nav link based on scroll position with debounce
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                let fromTop = window.scrollY + 100;
+
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    let section = document.querySelector(link.hash);
+
+                    if (
+                        section.offsetTop <= fromTop &&
+                        section.offsetTop + section.offsetHeight > fromTop
+                    ) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }, 100);
+        });
+
+        // Enhanced typewriter effect with backspacing
+        const typewriter = document.querySelector('.typewriter');
+        const sequence = [
+            "Create.",
+            "Define.",
+            "Dominate.",
+            "Create. Define. Dominate."
+        ];
+        let loopNum = 0;
+        let isDeleting = false;
+        let text = '';
+        let i = 0;
+
+        function type() {
+            const current = sequence[loopNum % sequence.length];
+            if (isDeleting) {
+                text = current.substring(0, text.length - 1);
+            } else {
+                text = current.substring(0, text.length + 1);
+            }
+
+            typewriter.textContent = text;
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && text === current) {
+                typeSpeed = 1000;
+                isDeleting = true;
+            } else if (isDeleting && text === '') {
+                isDeleting = false;
+                loopNum++;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        setTimeout(type, 1000);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Lottie Animation Rotation System
+        document.addEventListener('DOMContentLoaded', function () {
+            const animationContainer = document.querySelector('.lottie-container');
+            const sportLabel = document.querySelector('.sport-label');
+            const players = document.querySelectorAll('dotlottie-player');
+
+            // Animation configurations
+            const animations = [
+                { name: 'Basketball', speed: 1 },
+                { name: 'Boxing', speed: 1 },
+                { name: 'Football', speed: 1 },
+                { name: 'Tennis', speed: 1 },
+                { name: 'Running', speed: 1 }
+            ];
+
+            let currentAnimation = 0;
+            let rotationInterval;
+            let isMobile = window.innerWidth < 768;
+            const rotationSpeed = isMobile ? 7000 : 5000;
+
+            function rotateAnimations() {
+                players[currentAnimation].classList.remove('active');
+                sportLabel.classList.remove('active');
+
+                currentAnimation = (currentAnimation + 1) % animations.length;
+
+                setTimeout(() => {
+                    players[currentAnimation].classList.add('active');
+                    sportLabel.textContent = animations[currentAnimation].name;
+                    sportLabel.classList.add('active');
+                }, 400);
+            }
+
+            rotationInterval = setInterval(rotateAnimations, rotationSpeed);
+
+            animationContainer.addEventListener('mouseenter', () => {
+                if (!isMobile) {
+                    clearInterval(rotationInterval);
+                    players.forEach(player => player.pause());
+                }
+            });
+
+            animationContainer.addEventListener('mouseleave', () => {
+                if (!isMobile) {
+                    rotationInterval = setInterval(rotateAnimations, rotationSpeed);
+                    players.forEach(player => player.play());
+                }
+            });
+
+            if (isMobile) {
+                players.forEach(player => {
+                    player.speed = 0.7;
+                });
+            }
+
+            window.addEventListener('resize', () => {
+                const newIsMobile = window.innerWidth < 768;
+                if (isMobile !== newIsMobile) {
+                    isMobile = newIsMobile;
+                    const newSpeed = isMobile ? 7000 : 5000;
+
+                    clearInterval(rotationInterval);
+                    rotationInterval = setInterval(rotateAnimations, newSpeed);
+
+                    players.forEach(player => {
+                        player.speed = isMobile ? 0.7 : 1;
+                    });
+                }
+            });
+        });
+
+        // Scroll prompt functionality
+        const scrollPrompt = document.querySelector('.scroll-prompt');
+        scrollPrompt.addEventListener('click', () => {
+            window.scrollBy({
+                top: window.innerHeight - 100,
+                behavior: 'smooth'
+            });
+        });
+
+        // Parallax effect
+        document.addEventListener('scroll', function () {
+            const scrollPosition = window.pageYOffset;
+            document.querySelectorAll('.parallax-layer').forEach(layer => {
+                const depth = layer.getAttribute('data-depth');
+                const movement = -(scrollPosition * depth);
+                layer.style.transform = `translateY(${movement}px)`;
+            });
+        });
+
+        // Scroll-triggered animations
+        const animateOnScroll = function () {
+            const elements = document.querySelectorAll('.fade-in-left, .fade-in-right, .fade-in-up');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (elementPosition < screenPosition) {
+                    element.classList.add('is-visible');
+                } else {
+                    element.classList.remove('is-visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+
+        // Animate pathway steps
+        function animatePathway() {
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    step.classList.add('active');
+                }, index * 300);
+            });
+        }
+
+        // Trigger when services section is visible
+        const servicesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animatePathway();
+                } else {
+                    // Reset pathway animation when scrolled away
+                    document.querySelectorAll('.step').forEach(step => {
+                        step.classList.remove('active');
+                    });
+                }
+            });
+        }, { threshold: 0.2 });
+
+        servicesObserver.observe(document.getElementById('services'));
+    </script>
+</body>
+</html>
